@@ -1,20 +1,18 @@
 # agent-skills
 
-yamitzky の公開 agent skill 集です。[skills](https://github.com/vercel-labs/skills) エコシステムに対応しており、`npx skills add` で各種 AI コーディングエージェント（Claude Code / Codex / Cursor など）に簡単にインストールできます。
+my agent skills.
 
 ## インストール
 
 ```bash
-# リポジトリ内のすべての skill をインストール
+# Install all skills
 npx skills add yamitzky/agent-skills
 
-# 特定の skill だけインストール
+# Install a specific skill
 npx skills add https://github.com/yamitzky/agent-skills/tree/main/skills/deep-explain
 ```
 
-インストール先のエージェントは対話的に選択できます。
-
-## 収録 skill
+## skill一覧
 
 | skill | 概要 |
 |-------|------|
