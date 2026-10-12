@@ -4,12 +4,23 @@ my agent skills.
 
 ## インストール
 
-```bash
-# Install all skills
-npx skills add yamitzky/agent-skills
+Claude Code のプラグインとして配布しています。
 
-# Install a specific skill
-npx skills add https://github.com/yamitzky/agent-skills/tree/main/skills/deep-explain
+```
+/plugin install agent-skills --marketplace yamitzky/agent-skills
+```
+
+Claude Code 2.1.275 より前のバージョンでは、マーケットプレイスを追加してからインストールします。
+
+```
+/plugin marketplace add yamitzky/agent-skills
+/plugin install agent-skills@yamitzky-agent-skills
+```
+
+`skills/` 配下の構成は Agent Skills 形式のままなので、Claude Code 以外のエージェントには従来どおり `npx skills add` でも入れられます。
+
+```bash
+npx skills add yamitzky/agent-skills
 ```
 
 ## skill一覧
@@ -22,9 +33,12 @@ npx skills add https://github.com/yamitzky/agent-skills/tree/main/skills/deep-ex
 
 ## skill の追加方法
 
-各 skill は `skills/<name>/` ディレクトリに置き、最低限 `SKILL.md`（frontmatter に `name` と `description`）を含めます。
+各 skill は `skills/<name>/` ディレクトリに置き、最低限 `SKILL.md`（frontmatter に `name` と `description`）を含めます。プラグインは `skills/` 配下を自動で読み込むので、マニフェストの編集は不要です。
 
 ```
+.claude-plugin/
+├── plugin.json        # プラグインのマニフェスト
+└── marketplace.json   # このリポジトリ自身をマーケットプレイスとして公開する
 skills/
 └── <name>/
     └── SKILL.md

@@ -1,0 +1,14 @@
+{
+  "name": "yamitzky-agent-skills",
+  "owner": {
+    "name": "yamitzky"
+  },
+  "description": "yamitzky's agent skills",
+  "plugins": [
+    {
+      "name": "agent-skills",
+      "source": "./",
+      "description": "yamitzky's agent skills"
+    }
+  ]
+}
