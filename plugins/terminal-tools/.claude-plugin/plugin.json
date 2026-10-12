@@ -1,0 +1,10 @@
+{
+  "name": "terminal-tools",
+  "description": "Terminal multiplexer skills for Zellij and cmux",
+  "version": "1.0.0",
+  "author": {
+    "name": "yamitzky"
+  },
+  "repository": "https://github.com/yamitzky/claude-plugins",
+  "license": "CC0-1.0"
+}

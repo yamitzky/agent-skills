@@ -8,6 +8,7 @@ my Claude Code plugins.
 
 ```
 /plugin install agent-skills --marketplace yamitzky/claude-plugins
+/plugin install terminal-tools --marketplace yamitzky/claude-plugins
 ```
 
 Claude Code 2.1.275 より前のバージョンでは、マーケットプレイスを追加してからインストールします。
@@ -15,6 +16,7 @@ Claude Code 2.1.275 より前のバージョンでは、マーケットプレイ
 ```
 /plugin marketplace add yamitzky/claude-plugins
 /plugin install agent-skills@yamitzky-claude-plugins
+/plugin install terminal-tools@yamitzky-claude-plugins
 ```
 
 skill は Agent Skills 形式のままなので、Claude Code 以外のエージェントには `npx skills add` でも入れられます。
@@ -30,8 +32,13 @@ npx skills add yamitzky/claude-plugins
 | skill | 概要 |
 |-------|------|
 | [`deep-explain`](plugins/agent-skills/skills/deep-explain/) | 「その応答だけ読めばわかる」「ルー語/造語禁止」の原則に従って説明し直させる skill。差分だけの説明やジャーゴンまみれの要約を禁止する。 |
-| [`cmux`](plugins/agent-skills/skills/cmux/) | cmux を CLI で操作する skill。タブ（surface）/ペイン/ワークスペースの作成・操作、別ターミナルへのコマンド送信、出力読み取り、ブラウザ表示など。 |
-| [`zellij`](plugins/agent-skills/skills/zellij/) | Zellij を CLI で操作する skill。タブ/ペインの作成・管理、ペインへのコマンド・キー送信、画面ダンプの読み取りなど。 |
+
+### terminal-tools
+
+| skill | 概要 |
+|-------|------|
+| [`cmux`](plugins/terminal-tools/skills/cmux/) | cmux を CLI で操作する skill。タブ（surface）/ペイン/ワークスペースの作成・操作、別ターミナルへのコマンド送信、出力読み取り、ブラウザ表示など。 |
+| [`zellij`](plugins/terminal-tools/skills/zellij/) | Zellij を CLI で操作する skill。タブ/ペインの作成・管理、ペインへのコマンド・キー送信、画面ダンプの読み取りなど。 |
 
 ## 追加方法
 

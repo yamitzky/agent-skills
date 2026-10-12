@@ -9,6 +9,11 @@
       "name": "agent-skills",
       "source": "./plugins/agent-skills",
       "description": "yamitzky's agent skills"
+    },
+    {
+      "name": "terminal-tools",
+      "source": "./plugins/terminal-tools",
+      "description": "Terminal multiplexer skills for Zellij and cmux"
     }
   ]
 }
