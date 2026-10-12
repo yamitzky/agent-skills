@@ -1,13 +1,13 @@
 {
-  "name": "yamitzky-agent-skills",
+  "name": "yamitzky-claude-plugins",
   "owner": {
     "name": "yamitzky"
   },
-  "description": "yamitzky's agent skills",
+  "description": "yamitzky's Claude Code plugins",
   "plugins": [
     {
       "name": "agent-skills",
-      "source": "./",
+      "source": "./plugins/agent-skills",
       "description": "yamitzky's agent skills"
     }
   ]
