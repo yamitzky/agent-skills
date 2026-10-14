@@ -14,6 +14,11 @@
       "name": "terminal-tools",
       "source": "./plugins/terminal-tools",
       "description": "Terminal multiplexer skills for Zellij and cmux"
+    },
+    {
+      "name": "session-recap",
+      "source": "./plugins/session-recap",
+      "description": "会話の流れ・recap・俯瞰をパネルに出す mod"
     }
   ]
 }

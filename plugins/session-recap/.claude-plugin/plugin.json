@@ -1,0 +1,11 @@
+{
+  "name": "session-recap",
+  "description": "会話の流れ・recap・俯瞰をパネルに出す",
+  "version": "0.1.0",
+  "author": {
+    "name": "yamitzky"
+  },
+  "repository": "https://github.com/yamitzky/claude-plugins",
+  "license": "CC0-1.0",
+  "types": "./types/index.d.ts"
+}

@@ -1,3 +1,6 @@
 .DS_Store
 node_modules/
 *.log
+
+# mod の型は Claude Code が読み込むときに生成する
+plugins/*/.claude-plugin/types/
