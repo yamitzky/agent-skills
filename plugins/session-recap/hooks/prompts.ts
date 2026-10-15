@@ -139,7 +139,7 @@ export const recapPrompt = (previous: string, flow: FlowEntry[], recent: RecentT
 ${previous.trim() || '(なし)'}
 
 # 流れ
-${flow.map(flowText).join('\n')}
+${(flow[0]?.turn ?? 0) > 0 ? `(${flow[0]!.turn} 番より前は記録していない)\n` : ''}${flow.map(flowText).join('\n')}
 
 # 直近ターンの全文
 ${recent.map(t => `## ${t.index}\n### ユーザー\n${t.prompt}\n### Claude\n${t.answer || '(返答なし)'}`).join('\n\n')}`

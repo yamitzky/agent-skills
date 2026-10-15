@@ -15,6 +15,9 @@ type DumpedTurn = { index: number; uuid: string; at: string; text: string; promp
 
 // recap に全文で渡す直近ターンの数。それより前は流れの要約と前回の recap に任せる
 const RECAP_CONTEXT_TURNS = 5
+// 初めて開いたときや長く閉じていたあとに、たまったターンを全部要約すると Haiku の呼び出しが件数分かかる。
+// recap に効くのは最近の流れなので、追いつくのは最後のこの件数だけにして、それより前は飛ばす
+const CATCH_UP_TURNS = 10
 
 // 種類を 1 文字で見分けるための絵文字。端末で幅が崩れやすい異体字セレクタ付きの絵文字(🛠️ ⚖️ ♻️)は避けている
 const KIND_EMOJI: Record<string, string> = {
@@ -82,8 +85,10 @@ export const register: Register = on => {
     const appendFlow = async () => {
       const dir = await storeDir()
       const stored = await load()
-      const { turns } = await dumpTurns(Math.max(0, stored.flow.length - RECAP_CONTEXT_TURNS))
-      const fresh = turns.filter(t => t.index >= stored.flow.length)
+      // 飛ばした分があると件数と番号がずれるので、次に書く番号は最後の記録の番号から決める
+      const nextTurn = (stored.flow.at(-1)?.turn ?? -1) + 1
+      const { turns } = await dumpTurns(Math.max(0, nextTurn - RECAP_CONTEXT_TURNS))
+      const fresh = turns.filter(t => t.index >= nextTurn).slice(-CATCH_UP_TURNS)
       if (fresh.length === 0) return
 
       const flow = [...stored.flow]

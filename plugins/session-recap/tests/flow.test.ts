@@ -233,3 +233,30 @@ test('パネルが閉じているあいだは Haiku を呼ばず、開いたと�
   expect(calls.map(c => c.model)).toEqual(['haiku', 'haiku', 'haiku', 'haiku'])
 })
 
+
+test('たまったターンが多いときは、最後の 10 件だけを要約して、それより前は飛ばす', async ($, on) => {
+  const clock = mock.clock(on)
+  const { files, calls } = world(on, 25)
+  await $.session.start(START)
+  await openPane($)
+  await settle(clock, () => files.has(`${DIR}/recap.md`))
+
+  const flow = files.get(`${DIR}/flow.jsonl`)!.trim().split('\n').map(l => JSON.parse(l))
+  expect(flow.map(f => f.turn)).toEqual([15, 16, 17, 18, 19, 20, 21, 22, 23, 24])
+  // 10 件の流れと recap 1 回。recap には飛ばしたことを伝える
+  expect(calls.length).toBe(11)
+  expect(calls.at(-1)!.prompt).toContain('15 番より前は記録していない')
+})
+
+test('飛ばしたあとに来たターンは、最後の記録の次の番号から足す', async ($, on) => {
+  const clock = mock.clock(on)
+  const { files } = world(on, 22)
+  const done = (i: number) => ({ turn: i, uuid: `u${i}`, at: 't', kinds: ['依頼'], rel: '続き', ref: [], marks: [], user: `済${i}`, claude: `済${i}` })
+  files.set(`${DIR}/flow.jsonl`, [done(15), done(16), done(17), done(18), done(19)].map(x => JSON.stringify(x)).join('\n') + '\n')
+  await $.session.start(START)
+  await openPane($)
+  await settle(clock, () => files.has(`${DIR}/recap.md`))
+
+  const flow = files.get(`${DIR}/flow.jsonl`)!.trim().split('\n').map(l => JSON.parse(l))
+  expect(flow.map(f => f.turn)).toEqual([15, 16, 17, 18, 19, 20, 21])
+})
