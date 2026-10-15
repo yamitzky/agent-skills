@@ -10,6 +10,7 @@ my Claude Code plugins.
 /plugin install agent-skills --marketplace yamitzky/claude-plugins
 /plugin install terminal-tools --marketplace yamitzky/claude-plugins
 /plugin install session-recap --marketplace yamitzky/claude-plugins
+/plugin install session-memo --marketplace yamitzky/claude-plugins
 ```
 
 Claude Code 2.1.275 より前のバージョンでは、マーケットプレイスを追加してからインストールします。
@@ -19,6 +20,7 @@ Claude Code 2.1.275 より前のバージョンでは、マーケットプレイ
 /plugin install agent-skills@yamitzky-claude-plugins
 /plugin install terminal-tools@yamitzky-claude-plugins
 /plugin install session-recap@yamitzky-claude-plugins
+/plugin install session-memo@yamitzky-claude-plugins
 ```
 
 skill は Agent Skills 形式のままなので、Claude Code 以外のエージェントには `npx skills add` でも入れられます。
@@ -53,6 +55,10 @@ npx skills add yamitzky/claude-plugins
 | 俯瞰 | ゴールまでに何が残っていて、次に何をすると近づくかの見立て。ボタンを押したときだけ Opus が書く |
 
 記録は `~/.claude/session-recap/<セッション ID>/` に保存する。中で `node` が `.ts` を直接実行するので、Node 22.18 以降が要る。
+
+### session-memo
+
+`/memo` でパネルを開く mod（Claude Code の function hooks）。セッションごとに、ふつうの複数行のメモを書ける。メモ欄をクリックすると書けるようになり、Esc で抜ける。書くたびに `~/.claude/session-memo/<セッション ID>.md` に保存する。mobile と VS Code では表示だけ。
 
 ## 追加方法
 

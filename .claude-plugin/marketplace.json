@@ -19,6 +19,11 @@
       "name": "session-recap",
       "source": "./plugins/session-recap",
       "description": "会話の流れ・recap・俯瞰をパネルに出す mod"
+    },
+    {
+      "name": "session-memo",
+      "source": "./plugins/session-memo",
+      "description": "セッションごとに複数行のメモを書けるパネルの mod"
     }
   ]
 }

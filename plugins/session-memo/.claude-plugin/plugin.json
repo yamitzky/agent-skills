@@ -1,0 +1,11 @@
+{
+  "name": "session-memo",
+  "description": "セッションごとに手で書くメモのパネル",
+  "version": "0.1.0",
+  "author": {
+    "name": "yamitzky"
+  },
+  "repository": "https://github.com/yamitzky/claude-plugins",
+  "license": "CC0-1.0",
+  "types": "./types/index.d.ts"
+}
